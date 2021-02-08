@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as Constants from '../Constants/Constants.js';
 import TableDisplay from './TableDisplay/TableDisplay.js';
 import FiltrationDisplay from './FiltrationDisplay/FiltrationDisplay.js';
+import * as SortingFunctions from '../SortingFunctions/SortingFunctions.js';
 
 export default class DataDisplay extends React.Component
 {
@@ -41,7 +42,7 @@ export default class DataDisplay extends React.Component
         {
            if(response.status === 200)
            {
-               this.setState({restaurantData: response.data});
+               this.setState({restaurantData: SortingFunctions.sortRestaurantsAlphabetically(response.data)});
                console.log("restaurant data", response.data);
            }
         })

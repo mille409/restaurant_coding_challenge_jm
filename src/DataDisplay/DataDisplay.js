@@ -11,20 +11,39 @@ export default class DataDisplay extends React.Component
     constructor()
     {
         super();
-        this.state = { restaurantData : null, filterActive: false};
+        this.state = { restaurantData : null, filterActive: false, filterByState: null};
+        this.filterByState = this.filterByState.bind(this);
     }
 
     render()
     {
         return <div>
-            <FiltrationDisplay/> 
-            <TableDisplay restaurantData = {this.state.restaurantData}/>
+            <FiltrationDisplay filterByState = {this.filterByState}/> 
+            <TableDisplay 
+                restaurantData = {this.state.restaurantData}
+                filterActive = {this.state.filterActive}
+                filterByState = {this.state.filterByState}
+
+            />
             </div>;
     }
 
     componentDidMount()
     {
         this.getRestaurantData();
+    }
+
+    filterByState(state)
+    {
+        console.log("Filter by state called with", state);
+        if(state !== "ALL")
+        {
+            this.setState({filterActive: true,filterByState: state});
+        }
+        else
+        {
+            this.setState({filterActive: false, filterByState: null});
+        }
     }
 
     getRestaurantData()

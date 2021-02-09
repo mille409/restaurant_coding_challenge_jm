@@ -37,7 +37,6 @@ export default class TableDisplay extends React.Component
             {
                 if(this.props.filterByState || this.props.filterByGenre)
                 {
-                    console.log("GATE A PASSED");
                     if(this.props.filterByState && !this.props.filterByGenre)
                     {
                         displayRows = FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState).map(element => 
@@ -63,21 +62,27 @@ export default class TableDisplay extends React.Component
                         />)
                     }
 
-
-                    return <table>
-                    <thead>
-                        <tr>
-                        <th>NAME</th>
-                        <th>CITY</th>
-                        <th>STATE</th>
-                        <th>PHONE NUMBER</th>
-                        <th>GENRES</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {displayRows}
-                    </tbody>
-                    </table>;
+                    if(displayRows.length > 0)
+                    {
+                        return <table>
+                        <thead>
+                            <tr>
+                            <th>NAME</th>
+                            <th>CITY</th>
+                            <th>STATE</th>
+                            <th>PHONE NUMBER</th>
+                            <th>GENRES</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {displayRows}
+                        </tbody>
+                        </table>;
+                    }
+                    else
+                    {
+                        return <div>No data found which matches the given search parameters.</div>
+                    }
                 }
                 else
                 {

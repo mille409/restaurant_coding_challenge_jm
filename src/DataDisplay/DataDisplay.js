@@ -11,18 +11,30 @@ export default class DataDisplay extends React.Component
     constructor()
     {
         super();
-        this.state = { restaurantData : null, filterActive: false, filterByState: null};
+        this.state = 
+        { 
+            restaurantData: null, 
+            filterActive: false, 
+            filterByState: null, 
+            filterByGenre: null
+        };
         this.filterByState = this.filterByState.bind(this);
+        this.filterByGenre = this.filterByGenre.bind(this);
+        this.determineIfFilterIsActive = this.determineIfFilterIsActive.bind(this);
     }
 
     render()
     {
         return <div>
-            <FiltrationDisplay filterByState = {this.filterByState}/> 
+            <FiltrationDisplay 
+                filterByState = {this.filterByState}
+                filterByGenre = {this.filterByGenre}
+            /> 
             <TableDisplay 
                 restaurantData = {this.state.restaurantData}
                 filterActive = {this.state.filterActive}
                 filterByState = {this.state.filterByState}
+                filterByGenre = {this.state.filterByGenre}
 
             />
             </div>;
@@ -35,15 +47,45 @@ export default class DataDisplay extends React.Component
 
     filterByState(state)
     {
-        console.log("Filter by state called with", state);
         if(state !== "ALL")
         {
-            this.setState({filterActive: true,filterByState: state});
+            this.setState({filterByState: state}, () => this.determineIfFilterIsActive() );
         }
         else
         {
-            this.setState({filterActive: false, filterByState: null});
+            this.setState({filterByState: null}, () => this.determineIfFilterIsActive() );
         }
+    }
+
+    filterByGenre(genre)
+    {
+        if(genre !== "ALL")
+        {
+            this.setState({filterByGenre: genre}, () => this.determineIfFilterIsActive() );
+        }
+        else
+        {
+            this.setState({filterByGenre: null}, () => this.determineIfFilterIsActive() );
+        }
+    }
+
+    determineIfFilterIsActive()
+    {
+        if(!this.state.filterByState && !this.state.filterByGenre)
+        {
+            if(this.state.filterActive) //This conditional is required to prevent endless state modification. 
+            {
+                this.setState({filterActive: false});
+            }
+        }
+        else
+        {
+            if(!this.state.filterActive) //Similar logic to the above comment.
+            {
+                this.setState({filterActive: true});
+            }
+        }
+
     }
 
     getRestaurantData()

@@ -10,3 +10,16 @@ export function filterRestaurantsByState(unfilteredArray,state)
     }
     return filteredArray;
 }
+
+export function filterRestaurantsByGenre(unfilteredArray,genre)
+{
+    let filteredArray = [];
+    for(let restaurant of unfilteredArray)
+    {
+        if(restaurant.genre.includes(genre))
+        {
+            filteredArray.push(restaurant);
+        }
+    }
+    return filteredArray;
+}

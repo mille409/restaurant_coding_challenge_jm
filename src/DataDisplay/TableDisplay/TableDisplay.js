@@ -35,12 +35,33 @@ export default class TableDisplay extends React.Component
             }
             else
             {
-                if(this.props.filterByState)
+                if(this.props.filterByState || this.props.filterByGenre)
                 {
-                displayRows = FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState).map(element => 
-                    <RestaurantInstance
-                        restaurant = {element}
-                    />)
+                    console.log("GATE A PASSED");
+                    if(this.props.filterByState && !this.props.filterByGenre)
+                    {
+                        displayRows = FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState).map(element => 
+                        <RestaurantInstance
+                            restaurant = {element}
+                        />)
+                    }
+
+                    if(!this.props.filterByState && this.props.filterByGenre)
+                    {
+                        displayRows = FiltrationFunctions.filterRestaurantsByGenre(this.props.restaurantData,this.props.filterByGenre).map(element => 
+                        <RestaurantInstance
+                            restaurant = {element}
+                        />)
+                    }
+
+                    if(this.props.filterByState && this.props.filterByGenre)
+                    {
+
+                        displayRows = FiltrationFunctions.filterRestaurantsByGenre(FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState),this.props.filterByGenre).map(element => 
+                        <RestaurantInstance
+                            restaurant = {element}
+                        />)
+                    }
 
 
                     return <table>

@@ -12,7 +12,6 @@ export default class FilterByState extends React.Component
 
     handleChange(event)
     {
-        console.log("handle change called.");
         this.setState({value: event.target.value});
         this.props.informParent(event.target.value);
     }

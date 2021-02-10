@@ -16,10 +16,12 @@ export default class DataDisplay extends React.Component
             restaurantData: null, 
             filterActive: false, 
             filterByState: null, 
-            filterByGenre: null
+            filterByGenre: null,
+            filterBySearchQuery: null
         };
         this.filterByState = this.filterByState.bind(this);
         this.filterByGenre = this.filterByGenre.bind(this);
+        this.filterBySearchQuery = this.filterBySearchQuery.bind(this);
         this.determineIfFilterIsActive = this.determineIfFilterIsActive.bind(this);
     }
 
@@ -29,12 +31,14 @@ export default class DataDisplay extends React.Component
             <FiltrationDisplay 
                 filterByState = {this.filterByState}
                 filterByGenre = {this.filterByGenre}
+                filterBySearchQuery = {this.filterBySearchQuery}
             /> 
             <TableDisplay 
                 restaurantData = {this.state.restaurantData}
                 filterActive = {this.state.filterActive}
                 filterByState = {this.state.filterByState}
                 filterByGenre = {this.state.filterByGenre}
+                filterBySearchQuery = {this.state.filterBySearchQuery}
 
             />
             </div>;
@@ -69,8 +73,21 @@ export default class DataDisplay extends React.Component
         }
     }
 
+    filterBySearchQuery(searchQuery)
+    {
+        if(searchQuery)
+        {
+            this.setState({filterBySearchQuery: searchQuery});
+        }
+        else
+        {
+            this.setState({filterBySearchQuery: null});
+        }
+    }
+
     determineIfFilterIsActive()
     {
+        //Determines if a filter is present.
         if(!this.state.filterByState && !this.state.filterByGenre)
         {
             if(this.state.filterActive) //This conditional is required to prevent endless state modification. 

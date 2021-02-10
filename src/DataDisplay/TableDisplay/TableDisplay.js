@@ -12,55 +12,69 @@ export default class TableDisplay extends React.Component
         {
             if(!this.props.filterActive)
             {
-                displayRows = this.props.restaurantData.map(element => 
+                let filteredArray = this.props.restaurantData;
+                if(this.props.filterBySearchQuery)
+                {
+                    filteredArray = FiltrationFunctions.filterRestaurantsBySearchQuery(filteredArray,this.props.filterBySearchQuery);
+                }
+
+                displayRows = filteredArray.map(element => 
                     <RestaurantInstance
                         restaurant = {element}
                     />)
 
-
-                    return <table>
-                    <thead>
-                        <tr>
-                        <th>NAME</th>
-                        <th>CITY</th>
-                        <th>STATE</th>
-                        <th>PHONE NUMBER</th>
-                        <th>GENRES</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {displayRows}
-                    </tbody>
-                    </table>;
+                    if(filteredArray.length > 0)
+                    {
+                        return <table>
+                        <thead>
+                            <tr>
+                            <th>NAME</th>
+                            <th>CITY</th>
+                            <th>STATE</th>
+                            <th>PHONE NUMBER</th>
+                            <th>GENRES</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {displayRows}
+                        </tbody>
+                        </table>;
+                    }
+                    else
+                    {
+                        return <div>No data found which matches the given search parameters.</div>;
+                    }
             }
             else
             {
                 if(this.props.filterByState || this.props.filterByGenre)
                 {
+                    let filteredArray = [];
                     if(this.props.filterByState && !this.props.filterByGenre)
                     {
-                        displayRows = FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState).map(element => 
-                        <RestaurantInstance
-                            restaurant = {element}
-                        />)
+                        filteredArray = FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState);
                     }
 
                     if(!this.props.filterByState && this.props.filterByGenre)
                     {
-                        displayRows = FiltrationFunctions.filterRestaurantsByGenre(this.props.restaurantData,this.props.filterByGenre).map(element => 
-                        <RestaurantInstance
-                            restaurant = {element}
-                        />)
+                        filteredArray = FiltrationFunctions.filterRestaurantsByGenre(this.props.restaurantData,this.props.filterByGenre);
                     }
 
                     if(this.props.filterByState && this.props.filterByGenre)
                     {
 
-                        displayRows = FiltrationFunctions.filterRestaurantsByGenre(FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState),this.props.filterByGenre).map(element => 
+                        filteredArray = FiltrationFunctions.filterRestaurantsByGenre(FiltrationFunctions.filterRestaurantsByState(this.props.restaurantData,this.props.filterByState),this.props.filterByGenre);
+                    }
+
+                    if(this.props.filterBySearchQuery)
+                    {
+                        filteredArray = FiltrationFunctions.filterRestaurantsBySearchQuery(filteredArray,this.props.filterBySearchQuery);
+                    }
+
+                    displayRows = filteredArray.map(element => 
                         <RestaurantInstance
                             restaurant = {element}
                         />)
-                    }
 
                     if(displayRows.length > 0)
                     {
@@ -81,7 +95,7 @@ export default class TableDisplay extends React.Component
                     }
                     else
                     {
-                        return <div>No data found which matches the given search parameters.</div>
+                        return <div>No data found which matches the given search parameters.</div>;
                     }
                 }
                 else

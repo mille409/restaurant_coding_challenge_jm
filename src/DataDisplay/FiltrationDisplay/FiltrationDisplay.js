@@ -12,13 +12,14 @@ export default class FiltrationDisplay extends React.Component
         this.state = {stateValue: null};
         this.informParentState = this.informParentState.bind(this);
         this.informParentGenre = this.informParentGenre.bind(this);
+        this.informParentSearchQuery = this.informParentSearchQuery.bind(this);
     }
 
 
     render()
     {
         return <div> 
-            <SearchBar/> 
+            <SearchBar informParent = {this.informParentSearchQuery}/> 
             <FilterByState informParent = {this.informParentState}/>
             <FilterByGenre informParent = {this.informParentGenre}/>
         </div>
@@ -32,5 +33,10 @@ export default class FiltrationDisplay extends React.Component
     informParentGenre(genre)
     {
         this.props.filterByGenre(genre);
+    }
+
+    informParentSearchQuery(searchQuery)
+    {
+        this.props.filterBySearchQuery(searchQuery);
     }
 }

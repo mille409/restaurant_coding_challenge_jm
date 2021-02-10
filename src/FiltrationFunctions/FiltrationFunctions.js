@@ -23,3 +23,16 @@ export function filterRestaurantsByGenre(unfilteredArray,genre)
     }
     return filteredArray;
 }
+
+export function filterRestaurantsBySearchQuery(unfilteredArray,searchQuery)
+{
+    let filteredArray = [];
+    for(let restaurant of unfilteredArray)
+    {
+        if(restaurant.genre.includes(searchQuery) || restaurant.name === searchQuery || restaurant.city === searchQuery)
+        {
+            filteredArray.push(restaurant);
+        }
+    }
+    return filteredArray;
+}

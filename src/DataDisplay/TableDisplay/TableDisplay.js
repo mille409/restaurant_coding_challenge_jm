@@ -69,16 +69,17 @@ export default class TableDisplay extends React.Component
 
                     if(filteredArray.length > 0)
                     {
-                        return <div><table>
-                        <thead>
-                            <tr>
-                            <th>NAME</th>
-                            <th>CITY</th>
-                            <th>STATE</th>
-                            <th>PHONE NUMBER</th>
-                            <th>GENRES</th>
-                        </tr>
-                        </thead>
+                        return <div>
+                        <table className = "stylizedTable">
+                            <thead>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>CITY</th>
+                                    <th>STATE</th>
+                                    <th>PHONE NUMBER</th>
+                                    <th>GENRES</th>
+                                </tr>
+                            </thead>
                         <tbody>
                             {this.returnPaginatedDisplayArray(displayRows,this.state.page)}
                         </tbody>

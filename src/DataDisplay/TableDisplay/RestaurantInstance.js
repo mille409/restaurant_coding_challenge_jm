@@ -22,7 +22,7 @@ export default class RestaurantInstance extends React.Component
                         <td>{this.props.restaurant.city}</td>
                         <td>{this.props.restaurant.state}</td>
                         <td>{this.props.restaurant.telephone}</td>
-                        <td>{this.props.restaurant.genre}</td>
+                        <td>{this.props.restaurant.genre}</td>                        
                    </tr>
         }
         else
@@ -33,6 +33,6 @@ export default class RestaurantInstance extends React.Component
 
     activateModal()
     {
-        
+        this.props.activateModal(this.props.restaurant);
     }
 }

@@ -3,6 +3,7 @@ import RestaurantInstance from './RestaurantInstance';
 import * as FiltrationFunctions from '../../FiltrationFunctions/FiltrationFunctions.js';
 import Pagination from './Pagination.js';
 import './TableDisplay.css';
+import ModalDisplay from './ModalDisplay';
 
 export default class TableDisplay extends React.Component
 {
@@ -10,8 +11,14 @@ export default class TableDisplay extends React.Component
     constructor()
     {
         super();
-        this.state = {page: 1};
+        this.state = 
+        {
+            page: 1, 
+            modalRestaurant: null,
+            modalActivated: false
+        };
         this.processPaginationSelection = this.processPaginationSelection.bind(this);
+        this.activateModal = this.activateModal.bind(this);
     }
 
     createPageArray(filteredArrayLength)
@@ -49,6 +56,12 @@ export default class TableDisplay extends React.Component
         this.setState({page: page});
     }
 
+    activateModal (restaurant)
+    {
+        console.log("Modal activated");
+        this.setState({modalActivated: true, modalRestaurant: restaurant});
+    }
+
     render()
     {
         let displayRows = null;
@@ -64,6 +77,7 @@ export default class TableDisplay extends React.Component
 
                 displayRows = filteredArray.map(element => 
                     <RestaurantInstance
+                        activateModal = {this.activateModal}
                         restaurant = {element}
                     />)
 
@@ -87,6 +101,10 @@ export default class TableDisplay extends React.Component
                         <Pagination 
                             pages = {this.createPageArray(displayRows.length)}
                             informParent = {this.processPaginationSelection}
+                        />
+                        <ModalDisplay
+                            modalActivated = {this.state.modalActivated}
+                            modalRestaurant = {this.state.modalRestaurant}
                         /> </div>;
                     }
                     else
@@ -122,6 +140,7 @@ export default class TableDisplay extends React.Component
 
                     displayRows = filteredArray.map(element => 
                         <RestaurantInstance
+                            activateModal = {this.activateModal}
                             restaurant = {element}
                         />)
 
@@ -144,7 +163,11 @@ export default class TableDisplay extends React.Component
                         <Pagination 
                             pages = {this.createPageArray(displayRows.length)}
                             informParent = {this.processPaginationSelection}
-                        /> </div>;
+                        />
+                        <ModalDisplay
+                            modalActivated = {this.state.modalActivated}
+                            modalRestaurant = {this.state.modalRestaurant}
+                        />  </div>;
                     }
                     else
                     {

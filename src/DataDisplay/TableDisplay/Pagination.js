@@ -7,6 +7,7 @@ export default class Pagination extends React.Component
     constructor()
     {
         super();
+        this.state = {currentPage: 1};
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -15,9 +16,10 @@ export default class Pagination extends React.Component
         return (
                 <ul>
                   { this.props.pages.map((page, index) => {
+                    var activeClass = this.state.currentPage === page ? 'active' : '';
                     return (
                       <li key={index}>
-                        <a href="#" onClick={ () => this.handleClick(page)}>{ page }</a>
+                        <a href="#" className={`${activeClass}`} onClick={ () => this.handleClick(page)}>{ page }</a>
                       </li>
                     );
                   }) }
@@ -27,7 +29,7 @@ export default class Pagination extends React.Component
 
     handleClick(page)
     {
-        console.log("Handle click called with a page value of",page);
         this.props.informParent(page);
+        this.setState({currentPage: page});
     }
 }

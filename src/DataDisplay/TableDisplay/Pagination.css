@@ -6,11 +6,19 @@ ul
 
 li
 {
-    padding: 2%;
+  padding: 2%;
 }
 
 a
 {
-    text-align: center;
-    color: dodgerblue;
+  text-align: center;
+  color: black;
+  border-radius: 10px;
+}
+
+a.active
+{
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 10px;
 }

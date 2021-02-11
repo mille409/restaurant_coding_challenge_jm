@@ -16,6 +16,10 @@ export default class SearchBar extends React.Component
     handleChange(event)
     {
         this.setState({searchQuery: event.target.value});
+        if(!event.target.value)
+        {
+            this.props.informParent("WIPE");
+        }
     }
 
     render()

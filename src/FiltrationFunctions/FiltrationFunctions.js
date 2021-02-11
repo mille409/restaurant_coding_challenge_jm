@@ -29,7 +29,7 @@ export function filterRestaurantsBySearchQuery(unfilteredArray,searchQuery)
     let filteredArray = [];
     for(let restaurant of unfilteredArray)
     {
-        if(restaurant.genre.includes(searchQuery) || restaurant.name === searchQuery || restaurant.city === searchQuery)
+        if(restaurant.genre.includes(searchQuery) || restaurant.name.includes(searchQuery) || restaurant.city.includes(searchQuery))
         {
             filteredArray.push(restaurant);
         }

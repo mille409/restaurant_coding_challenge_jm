@@ -75,19 +75,28 @@ export default class DataDisplay extends React.Component
 
     filterBySearchQuery(searchQuery)
     {
-        if(searchQuery)
+        //We have a special case for wiping the search results. Note that this case is separate from the normal flow becuase neither the enter key nor the 
+        // search button has been necessarily activated.
+        if(searchQuery === "WIPE")
         {
-            this.setState({filterBySearchQuery: searchQuery});
+            this.setState({filterBySearchQuery: null});
         }
         else
         {
-            this.setState({filterBySearchQuery: null});
+            if(searchQuery)
+            {
+                this.setState({filterBySearchQuery: searchQuery});
+            }
+            else
+            {
+                this.setState({filterBySearchQuery: null});
+            }
         }
     }
 
     determineIfFilterIsActive()
     {
-        //Determines if a filter is present.
+        //Determines if a filter is present. Note that we do not consider the search query to be a "filter" even though it is named as such for consistency throughout the program.
         if(!this.state.filterByState && !this.state.filterByGenre)
         {
             if(this.state.filterActive) //This conditional is required to prevent endless state modification. 

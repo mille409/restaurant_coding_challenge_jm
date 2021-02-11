@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/restaurant_coding_challenge_jm/static/css/main.b684a471.chunk.css",
-    "main.js": "/restaurant_coding_challenge_jm/static/js/main.4fe87ba8.chunk.js",
-    "main.js.map": "/restaurant_coding_challenge_jm/static/js/main.4fe87ba8.chunk.js.map",
+    "main.js": "/restaurant_coding_challenge_jm/static/js/main.afbcf9fb.chunk.js",
+    "main.js.map": "/restaurant_coding_challenge_jm/static/js/main.afbcf9fb.chunk.js.map",
     "runtime-main.js": "/restaurant_coding_challenge_jm/static/js/runtime-main.bf5a3cbb.js",
     "runtime-main.js.map": "/restaurant_coding_challenge_jm/static/js/runtime-main.bf5a3cbb.js.map",
     "static/js/2.23e8c177.chunk.js": "/restaurant_coding_challenge_jm/static/js/2.23e8c177.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.bf5a3cbb.js",
     "static/js/2.23e8c177.chunk.js",
     "static/css/main.b684a471.chunk.css",
-    "static/js/main.4fe87ba8.chunk.js"
+    "static/js/main.afbcf9fb.chunk.js"
   ]
 }

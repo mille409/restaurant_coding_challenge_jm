@@ -140,7 +140,6 @@ export default class DataDisplay extends React.Component
            if(response.status === 200)
            {
                this.setState({restaurantData: SortingFunctions.sortRestaurantsAlphabetically(response.data)});
-               console.log("restaurant data", response.data);
            }
         })
     }

@@ -58,7 +58,6 @@ export default class TableDisplay extends React.Component
 
     activateModal (restaurant)
     {
-        console.log("Modal activated");
         this.setState({modalActivated: true, modalRestaurant: restaurant});
     }
 

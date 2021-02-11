@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/restaurant_coding_challenge_jm/static/css/main.bb1cd2d8.chunk.css",
-    "main.js": "/restaurant_coding_challenge_jm/static/js/main.1fb78d1b.chunk.js",
-    "main.js.map": "/restaurant_coding_challenge_jm/static/js/main.1fb78d1b.chunk.js.map",
+    "main.css": "/restaurant_coding_challenge_jm/static/css/main.b684a471.chunk.css",
+    "main.js": "/restaurant_coding_challenge_jm/static/js/main.4fe87ba8.chunk.js",
+    "main.js.map": "/restaurant_coding_challenge_jm/static/js/main.4fe87ba8.chunk.js.map",
     "runtime-main.js": "/restaurant_coding_challenge_jm/static/js/runtime-main.bf5a3cbb.js",
     "runtime-main.js.map": "/restaurant_coding_challenge_jm/static/js/runtime-main.bf5a3cbb.js.map",
     "static/js/2.23e8c177.chunk.js": "/restaurant_coding_challenge_jm/static/js/2.23e8c177.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.24545353.chunk.js": "/restaurant_coding_challenge_jm/static/js/3.24545353.chunk.js",
     "static/js/3.24545353.chunk.js.map": "/restaurant_coding_challenge_jm/static/js/3.24545353.chunk.js.map",
     "index.html": "/restaurant_coding_challenge_jm/index.html",
-    "static/css/main.bb1cd2d8.chunk.css.map": "/restaurant_coding_challenge_jm/static/css/main.bb1cd2d8.chunk.css.map",
+    "static/css/main.b684a471.chunk.css.map": "/restaurant_coding_challenge_jm/static/css/main.b684a471.chunk.css.map",
     "static/js/2.23e8c177.chunk.js.LICENSE.txt": "/restaurant_coding_challenge_jm/static/js/2.23e8c177.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bf5a3cbb.js",
     "static/js/2.23e8c177.chunk.js",
-    "static/css/main.bb1cd2d8.chunk.css",
-    "static/js/main.1fb78d1b.chunk.js"
+    "static/css/main.b684a471.chunk.css",
+    "static/js/main.4fe87ba8.chunk.js"
   ]
 }

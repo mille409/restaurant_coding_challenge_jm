@@ -17,12 +17,14 @@ export default class DataDisplay extends React.Component
             filterActive: false, 
             filterByState: null, 
             filterByGenre: null,
-            filterBySearchQuery: null
+            filterBySearchQuery: null,
+            toggleActive: true
         };
         this.filterByState = this.filterByState.bind(this);
         this.filterByGenre = this.filterByGenre.bind(this);
         this.filterBySearchQuery = this.filterBySearchQuery.bind(this);
         this.determineIfFilterIsActive = this.determineIfFilterIsActive.bind(this);
+        this.processToggleState = this.processToggleState.bind(this);
     }
 
     render()
@@ -32,6 +34,8 @@ export default class DataDisplay extends React.Component
                 filterByState = {this.filterByState}
                 filterByGenre = {this.filterByGenre}
                 filterBySearchQuery = {this.filterBySearchQuery}
+                processToggleState = {this.processToggleState}
+                searchQuery = {this.state.filterBySearchQuery}
             /> 
             <TableDisplay 
                 restaurantData = {this.state.restaurantData}
@@ -73,6 +77,11 @@ export default class DataDisplay extends React.Component
         }
     }
 
+    processToggleState(filterState)
+    {
+        this.setState({toggleActive: filterState}, () => this.determineIfFilterIsActive());
+    }
+
     filterBySearchQuery(searchQuery)
     {
         //We have a special case for wiping the search results. Note that this case is separate from the normal flow becuase neither the enter key nor the 
@@ -97,7 +106,8 @@ export default class DataDisplay extends React.Component
     determineIfFilterIsActive()
     {
         //Determines if a filter is present. Note that we do not consider the search query to be a "filter" even though it is named as such for consistency throughout the program.
-        if(!this.state.filterByState && !this.state.filterByGenre)
+        //We also have to consider the toggle which can potentially disable the filtration capability. However even if the filter is allowed by the toggle, no filter is active if both dropdowns have a null/ALL state. 
+        if((!this.state.filterByState && !this.state.filterByGenre) || !this.state.toggleActive)
         {
             if(this.state.filterActive) //This conditional is required to prevent endless state modification. 
             {
@@ -106,7 +116,7 @@ export default class DataDisplay extends React.Component
         }
         else
         {
-            if(!this.state.filterActive) //Similar logic to the above comment.
+            if(!this.state.filterActive && this.state.toggleActive) //Similar logic to the above comment.
             {
                 this.setState({filterActive: true});
             }

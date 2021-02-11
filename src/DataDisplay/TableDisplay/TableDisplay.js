@@ -90,7 +90,7 @@ export default class TableDisplay extends React.Component
                     }
                     else
                     {
-                        return <div>No data found which matches the given search parameters.</div>;
+                        return <div>No data were found which matches the given search parameters.</div>;
                     }
             }
             else
@@ -141,13 +141,13 @@ export default class TableDisplay extends React.Component
                         </tbody>
                         </table>
                         <Pagination 
-                            pages = {displayRows.length}
+                            pages = {this.createPageArray(displayRows.length)}
                             informParent = {this.processPaginationSelection}
                         /> </div>;
                     }
                     else
                     {
-                        return <div>No data found which matches the given search parameters.</div>;
+                        return <div>No data were found which matches the given search parameters.</div>;
                     }
                 }
                 else

@@ -1,3 +1,14 @@
+### 'DEPLOYMENT EXPLANATION AND WALKTHROUGH: JACOB MILLER'
+
+*This is Jacob Miller here with an explanation on how to build and produce the code I've written for this coding challenge.
+I was not sure how you wanted me to deploy this app precisely so I elected to use GitHub pages. 
+To deploy this app to gitHub pages navigate to the project root and run the following command "npm run deploy".
+Make sure that you are on the main branch when you do this. 
+After the terminal states that the deployment was successful, open a browser (I would recommend Chrome) and enter the following URL into the navbar: 
+https://mille409.github.io/restaurant_coding_challenge_jm
+This URL can also be found under the homepage key in the package.json file. This should allow you to view the production version of the app. 
+I hope you enjoy the code. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -28,7 +39,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
+ 
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**

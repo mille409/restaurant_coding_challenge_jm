@@ -127,7 +127,7 @@ export default class TableDisplay extends React.Component
 
                     if(displayRows.length > 0)
                     {
-                        return <div> <table>
+                        return <div> <table className = "stylizedTable">
                         <thead>
                             <tr>
                             <th>NAME</th>
